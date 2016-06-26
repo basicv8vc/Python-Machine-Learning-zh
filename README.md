@@ -1,12 +1,23 @@
-# Python 机器学习
+# Python 机器学习 
 
-w<sub>k</sub>，我们将计算P(w<sub>k</sub>|h<sub>i</sub>)，每个h<sub>i</sub>
+<Python Machine Learning> 的中文翻译，机器学习入门好书。
+
+
+
+
+w<sub>k</sub>
+
+P(w<sub>k</sub>|h<sub>i</sub>)
+
+h<sub>i</sub>
 
 
 <sub>\alpha</sub>
 
 
-b<sup>n</sup> = x 可以转换为 log<sub>b</sub>x = n
+b<sup>n</sup> = x 
+
+log<sub>b</sub>x = n
 
 
 log<sub>10</sub>(ab) = log<sub>10</sub>(a) + log<sub>10</sub>(b)
