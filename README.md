@@ -1,6 +1,6 @@
 # Python 机器学习 
 
-<Python Machine Learning> 的中文翻译，机器学习入门好书。
+“Python Machine Learning” 的中文翻译，机器学习入门好书。
 
 
 
