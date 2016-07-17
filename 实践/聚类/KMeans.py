@@ -28,27 +28,29 @@ class KMeans(object):
             self.next_centers = self.centers
             self._getcenters()
             self._assign()
+        return self.assignment
 
     def _initialize(self):
         """
         初始化，即初始化k个中心点和每个样本属于哪个中心点
         这k个样本点是随机产生的
         """
-        feature_min_max = defaultdict([]) #保存每个特征值的最小值和最大值
+        feature_min_max = defaultdict(list) #保存每个特征值的最小值和最大值
         feature_dimensions = self.X.shape[1]
+        get_min_max = lambda x, y: (x,y) if x<y else (y,x)
         for i in xrange(feature_dimensions):
-            i_min, i_max = self.X[1][i], self.X[0][i] if self.X[0][i] > self.X[1][i] else self.X[0][i], self.X[1][i]
-            for j in xrange(self.X)[2:-1:2]:
-                tmp_min, tmp_max = self.X[j+1][i], self.X[j][i] if self.X[j][i] > self.X[j+1][i] else self.X[j][i], self.X[j+1][i]
+            i_min, i_max = get_min_max(self.X[0][i], self.X[1][i])
+            for j in range(self.X.shape[0])[2:-1:2]:
+                tmp_min, tmp_max = get_min_max(self.X[j][i], self.X[j+1][i])#self.X[j+1][i], self.X[j][i] if self.X[j][i] > self.X[j+1][i] else self.X[j][i], self.X[j+1][i]
                 if tmp_min < i_min:
                     i_min = tmp_min
                 if tmp_max > i_max:
                     i_max = tmp_max
-            tmp_min, tmp_max = self.X[-1][i], self.X[-2][i] if self.X[-2][i] > self.X[-1][i] else self.X[-2][i], self.X[-1][i]
+            tmp_min, tmp_max = get_min_max(self.X[-1][i], self.X[-2][i])#self.X[-1][i], self.X[-2][i] if self.X[-2][i] > self.X[-1][i] else self.X[-2][i], self.X[-1][i]
             i_min = tmp_min if tmp_min < i_min else i_min
             i_max = tmp_max if tmp_max > i_max else i_max
             feature_min_max[i] = [i_min, i_max]
-        for i in self.k:
+        for i in xrange(self.k):
             this_k = []
             for j in xrange(feature_dimensions):
                 value = uniform(feature_min_max[j][0], feature_min_max[j][1])
@@ -70,28 +72,22 @@ class KMeans(object):
 
         for i in xrange(self.X.shape[0]):
             min_distance = float("inf")
-            current_assignment = feature_dimensions
-            for j in xrange(feature_dimensions):
+            current_assignment = self.k
+            for j in xrange(self.k):
                 tmp_d = self._distance(self.X[i], self.centers[j])
                 if tmp_d < min_distance:
-                    tmp_d = min_distance
+                    min_distance = tmp_d
                     current_assignment = j
-            this.assignment[i] = current_assignment
+            self.assignment[i] = current_assignment
 
     def _getcenters(self):
         """
         计算每个中心点的平均值，作为新的中心点
         """
-        cluster_numbers = dict() #记录每个分类的样本数目
-        cluster_sum = np.zeros((self.k, len(self.X))) #记录每个分类的所有样本相加之和
-        for kk in self.assignment:
-            cluster_numbers[kk] = cluster_numbers.get(kk, 0) + 1
-            cluster_sum[kk] += self.X[kk]
+        cluster_numbers = defaultdict(int) #记录每个分类的样本数目
+        cluster_sum = np.zeros((self.k, len(self.X[0]))) #记录每个分类的所有样本相加之和
+        for index, center in enumerate(self.assignment):
+            cluster_numbers[center] = cluster_numbers.get(center, 0) + 1
+            cluster_sum[center] += self.X[index]
         for i in xrange(self.k):
-            self.centers[i] = list(cluster_sum[i]/cluster_numbers[i])
-
-clf = KMeans()
-
-X = np.ones((5,5))
-X[0][2] = 3
-X[0][3] = 5
+            self.centers[i] = list(cluster_sum[i]/float(cluster_numbers[i]))
