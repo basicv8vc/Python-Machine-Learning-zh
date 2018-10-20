@@ -15,5 +15,7 @@
 
 [第一章 让计算机从数据中学习](https://github.com/basicv8vc/Python-Machine-Learning-zh/blob/master/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%AE%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%AD%A6%E4%B9%A0.ipynb)
 
+[第二章 机器学习分类算法](https://github.com/basicv8vc/Python-Machine-Learning-zh/blob/master/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95.ipynb)
+
 
 
