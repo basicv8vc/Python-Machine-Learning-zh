@@ -17,5 +17,6 @@
 
 [第二章 机器学习分类算法](https://github.com/basicv8vc/Python-Machine-Learning-zh/blob/master/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95.ipynb)
 
+[第三章 使用scikit-learn进行分类器之旅](https://github.com/basicv8vc/Python-Machine-Learning-zh/blob/master/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E4%BD%BF%E7%94%A8Scikit-learn%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB%E5%99%A8%E4%B9%8B%E6%97%85.ipynb)
 
 
